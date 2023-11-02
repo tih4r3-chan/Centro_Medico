@@ -5,5 +5,5 @@ app_name = 'web'
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('/creaCuenta', views.UsersPost, name='formulario')
+    path('creaCuenta/', views.UsersPost, name='formulario')
 ]

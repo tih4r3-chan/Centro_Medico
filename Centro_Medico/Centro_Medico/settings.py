@@ -80,18 +80,18 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
-},
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'HOST': 'localhost',
-        'PORT': '3306',
-        'USER': 'admin',
-        'PASSWORD': '123456',
-        'NAME': 'centromed_users',
-        'OPTIONS': {
-            'sql_mode': 'traditional',
-        }
-    }
+}
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'HOST': 'localhost',
+    #     'PORT': '3306',
+    #     'USER': 'admin',
+    #     'PASSWORD': '123456',
+    #     'NAME': 'centromed_users',
+    #     'OPTIONS': {
+    #         'sql_mode': 'traditional',
+    #     }
+    # }
 }
 
 
