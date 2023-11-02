@@ -1,6 +1,8 @@
 from django.urls import path
-from .views import Ingreso
+from .import views
 
 urlpatterns =[
-    path('ingreso/',Ingreso.as_view(), name='lista_users')
+    path('',views.listaUsers, name='listaUsers'),
+    path('registro/',views.ingresoUser, name='ingresoUser'),
+    path('eliminar/<str:pk>/',views.eliminarUser, name='eliminarUser'),
 ]

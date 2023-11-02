@@ -1,21 +1,31 @@
-from django.shortcuts import render
 from django.views import View
 from .models import Users
-from django.http.response import JsonResponse
+from rest_framework.decorators import api_view
+from .serializers import UserSerializer
+from rest_framework.response import Response
+
 
 # vista basada en la clase 
-class Ingreso(View):
-    # metodo post
-    def get(self, request):
-        usuarios = list(Users.objects.values())
-        if len(usuarios)>0:
-            datos={'message': "Exitoso",'usuarios': usuarios}
-        else:
-            datos={'message': "No se encontraron usuarios :("}
-        return JsonResponse(datos)
+# metodo para listar los usuarios //para probar si sirve
+@api_view(['GET'])
+def listaUsers(request):
+    usuarios = Users.objects.all()
+    serializer = UserSerializer(usuarios, many=True)
+    return Response(serializer.data)
+
+# metodo para agregar usuarios
+@api_view(['POST'])  
+def ingresoUser(request):
+    serializer = UserSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+    else:
+        return Response(serializer.errors)
+    return Response(serializer.data)
     
-    def POST(self, request):
-        pass
-    
-    def DELETE(self, request):
-        pass
+# metodo para eliminar usuarios
+@api_view(['DELETE'])
+def eliminarUser(request, pk):
+    usuarios = Users.objects.get(id=pk)
+    usuarios.delete()
+    return Response('Usuario eliminado')

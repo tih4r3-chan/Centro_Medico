@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'ingresoUsers'
+    'ingresoUsers.apps.IngresousersConfig',
+    'centroWeb.apps.CentrowebConfig'
 ]
 
 MIDDLEWARE = [
@@ -75,13 +76,21 @@ WSGI_APPLICATION = 'Centro_Medico.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
+    
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+},
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'HOST': 'localhost',
         'PORT': '3306',
         'USER': 'admin',
         'PASSWORD': '123456',
-        'NAME': 'centromed_users'
+        'NAME': 'centromed_users',
+        'OPTIONS': {
+            'sql_mode': 'traditional',
+        }
     }
 }
 
