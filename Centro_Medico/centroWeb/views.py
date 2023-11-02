@@ -16,7 +16,7 @@ def index(request):
 
 
 def UsersPost(request):
-    url = "http://127.0.0.1:8000/ingresoUsers/registro/"
+    url = "http://127.0.0.1:8000/ingresoUsers/registro"
     form = userForm(request.POST or None)
     if form.is_valid():
         nombre = form.cleaned_data.get("nombre")
